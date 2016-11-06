@@ -1,0 +1,6 @@
+option batch on
+option confirm off
+open dp7days2die@dp7days2die.game.nfoservers.com
+get /* E:\7daystodieserver\7daystodieserverbackup\sync.%TIMESTAMP#yyyy-mm-dd%\*
+synchronize local E:\7daystodieserver\7daystodieserverbackup\sync.* /
+exit
