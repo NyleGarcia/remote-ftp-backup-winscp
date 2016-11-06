@@ -30,7 +30,7 @@ try
  
         $synchronizationResult =
 		$session.SynchronizeDirectories(
-        [WinSCP.SynchronizationMode]::Both, ($remotePath + "\sync"), ($localPath)), $False)
+        [WinSCP.SynchronizationMode]::local, ($remotePath + "\sync"), ($localPath)), $False)
 		# Throw on any error to emulate the (default) "option batch abort" mode
 		$synchronizationResult.Check()
 
