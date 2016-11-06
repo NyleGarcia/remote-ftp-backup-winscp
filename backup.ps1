@@ -28,18 +28,17 @@ try
         # Format timestamp
         $stamp = $(Get-Date -Format "yyyyMMddHHmmss")
  
-        $synchronizationResult =
-		$session.SynchronizeDirectories(
-        [WinSCP.SynchronizationMode]::local, ($remotePath + "\sync"), ($localPath)), $False)
-		# Throw on any error to emulate the (default) "option batch abort" mode
-		$synchronizationResult.Check()
+        # Download the file and throw on any error
+        $session.GetFiles(
+            ($remotePath),
+            ($localPath + "sync")).Check()
 
 		if (-not (test-path "$zipPath")) {throw "$zipPath needed"} 
 		set-alias sz "$env:ProgramFiles\7-Zip\7z.exe"  
 		
 		sz a -mx=9 ($localPath+$fileName + "." + $stamp + ".zip") ($localPath + "\sync")
 
-
+		Remove-Item ($localPath + "sync\*") -recurse
 
 
 
