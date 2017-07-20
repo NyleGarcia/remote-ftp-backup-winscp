@@ -1,6 +1,6 @@
 option batch on
 option confirm off
-open serverip
+open serverprofilename
 get /folder/* E:\foldertosync2\sync.%TIMESTAMP#yyyy-mm-dd%\*
 synchronize local E:\foldertosync2\sync.* /
 exit
